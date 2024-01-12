@@ -6,14 +6,24 @@ const filterSort = (data, searchTerm, sortState) => {
 
   // sort the data based on the sort state
   let sortedData = [...filteredData];
-  if (sortState) {
+  if (sortState === "default") sortedData.sort((a, b) => a.number - b.number);
+  if (sortState === "az")
+    sortedData.sort((a, b) => a.name.localeCompare(b.name));
+  if (sortState === "za")
+    sortedData.sort((a, b) => b.name.localeCompare(a.name));
+  if (sortState === "short") {
     sortedData.sort((a, b) => {
       const aLength = Number(a.length.replace(",", ""));
       const bLength = Number(b.length.replace(",", ""));
       return aLength - bLength;
     });
-  } else {
-    sortedData.sort((a, b) => a.number - b.number);
+  }
+  if (sortState === "long") {
+    sortedData.sort((a, b) => {
+      const aLength = Number(a.length.replace(",", ""));
+      const bLength = Number(b.length.replace(",", ""));
+      return bLength - aLength;
+    });
   }
   return sortedData;
 };

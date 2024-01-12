@@ -8,7 +8,7 @@ import filterSort from "./functions/filterSort";
 function App() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortState, setSortState] = useState(false);
+  const [sortState, setSortState] = useState("default");
   const [loading, setLoading] = useState(false);
 
   // outside function gets all data on page load
@@ -22,8 +22,8 @@ function App() {
   };
 
   // swap sort state
-  const handleSort = () => {
-    setSortState(!sortState);
+  const handleSort = (state) => {
+    setSortState(state);
   };
 
   // outside function filters and sorts data
@@ -31,11 +31,7 @@ function App() {
 
   return (
     <div className={styles.root}>
-      <Header
-        onSearch={handleSearch}
-        onSort={handleSort}
-        buttonLabel={sortState ? "Default Sort" : "Sort by Length"}
-      />
+      <Header onSearch={handleSearch} onSort={handleSort} />
       {loading ? (
         <p className={styles.loading}>Loading Ship Data...</p>
       ) : (
