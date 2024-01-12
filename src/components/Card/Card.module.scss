@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 160px;
+}
+
+.light_blue {
+  background-color: #8fd8f5;
+}
+
+.dark_blue {
+  background-color: #6789d4;
+}
+
+.head {
+  font-weight: 500;
+}
+
+.cont {
+  margin: 5px;
+  padding: 2px;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.08);
+}
