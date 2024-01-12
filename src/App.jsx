@@ -11,7 +11,7 @@ function App() {
   const [sortState, setSortState] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  //Get all data on page load
+  // outside function gets all data on page load
   useEffect(() => {
     getData(setLoading, setData);
   }, []);
@@ -21,10 +21,12 @@ function App() {
     setSearchTerm(searchTerm);
   };
 
+  // swap sort state
   const handleSort = () => {
     setSortState(!sortState);
   };
 
+  // outside function filters and sorts data
   const sortedData = filterSort(data, searchTerm, sortState);
 
   return (
